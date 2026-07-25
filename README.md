@@ -84,6 +84,23 @@
 
 <br/>
 
+<!-- ==================== Game Zone ==================== -->
+## <img src="https://media.giphy.com/media/daIfTnwGeY0J3zc1tg/giphy.gif" width="28"> Game Zone
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/press-start.svg" width="90%" alt="Arcade Press Start"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/pixel-runner.svg" width="90%" alt="Pixel Runner"/>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/space-invaders.svg" width="90%" alt="Space Invaders"/>
+</p>
+
+<br/>
+
 <!-- ==================== Projects Showcase ==================== -->
 ## <img src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif" width="28"> Featured Projects
 

@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="160" viewBox="0 0 800 160">
+  <style>
+    @keyframes runAcross {
+      0% { transform: translateX(-60px); }
+      100% { transform: translateX(860px); }
+    }
+    @keyframes legA {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes legB {
+      0%, 49% { opacity: 0; }
+      50%, 100% { opacity: 1; }
+    }
+    @keyframes bob {
+      0%, 49% { transform: translateY(0); }
+      50%, 100% { transform: translateY(-3px); }
+    }
+    @keyframes groundMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-40px); }
+    }
+    @keyframes cloudMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-900px); }
+    }
+    @keyframes obstacleMove {
+      0% { transform: translateX(860px); }
+      100% { transform: translateX(-80px); }
+    }
+    .runner { animation: runAcross 6s linear infinite; }
+    .body-bob { animation: bob 0.3s steps(1) infinite; }
+    .legs-a { animation: legA 0.3s steps(1) infinite; }
+    .legs-b { animation: legB 0.3s steps(1) infinite; }
+    .ground { animation: groundMove 0.4s linear infinite; }
+    .clouds { animation: cloudMove 20s linear infinite; }
+    .obstacle1 { animation: obstacleMove 6s linear infinite; }
+    .obstacle2 { animation: obstacleMove 6s linear infinite 3s; }
+    .px { shape-rendering: crispEdges; }
+  </style>
+
+  <!-- sky -->
+  <rect width="800" height="160" fill="#0d1117"/>
+
+  <!-- stars -->
+  <g fill="#58a6ff" opacity="0.6">
+    <rect x="100" y="20" width="2" height="2"/>
+    <rect x="300" y="35" width="2" height="2"/>
+    <rect x="500" y="15" width="2" height="2"/>
+    <rect x="700" y="40" width="2" height="2"/>
+    <rect x="200" y="50" width="2" height="2"/>
+    <rect x="620" y="25" width="2" height="2"/>
+  </g>
+
+  <!-- clouds (pixel style) -->
+  <g class="clouds" fill="#161b22">
+    <g transform="translate(150, 45)">
+      <rect x="0" y="6" width="48" height="12"/>
+      <rect x="8" y="0" width="28" height="8"/>
+    </g>
+    <g transform="translate(500, 30)">
+      <rect x="0" y="6" width="56" height="12"/>
+      <rect x="10" y="0" width="32" height="8"/>
+    </g>
+    <g transform="translate(1050, 50)">
+      <rect x="0" y="6" width="48" height="12"/>
+      <rect x="8" y="0" width="28" height="8"/>
+    </g>
+    <g transform="translate(1400, 35)">
+      <rect x="0" y="6" width="56" height="12"/>
+      <rect x="10" y="0" width="32" height="8"/>
+    </g>
+  </g>
+
+  <!-- ground -->
+  <rect x="0" y="130" width="800" height="2" fill="#58a6ff"/>
+  <g class="ground px" fill="#21262d">
+    <rect x="0" y="136" width="16" height="4"/>
+    <rect x="40" y="140" width="12" height="4"/>
+    <rect x="80" y="136" width="20" height="4"/>
+    <rect x="140" y="142" width="14" height="4"/>
+    <rect x="200" y="136" width="16" height="4"/>
+    <rect x="260" y="140" width="10" height="4"/>
+    <rect x="320" y="136" width="18" height="4"/>
+    <rect x="380" y="142" width="12" height="4"/>
+    <rect x="440" y="136" width="16" height="4"/>
+    <rect x="500" y="140" width="14" height="4"/>
+    <rect x="560" y="136" width="20" height="4"/>
+    <rect x="620" y="142" width="10" height="4"/>
+    <rect x="680" y="136" width="16" height="4"/>
+    <rect x="740" y="140" width="12" height="4"/>
+    <rect x="800" y="136" width="16" height="4"/>
+    <rect x="840" y="140" width="12" height="4"/>
+  </g>
+
+  <!-- obstacles (cacti-like pixel blocks) -->
+  <g class="obstacle1 px" fill="#3fb950">
+    <rect x="0" y="106" width="12" height="24"/>
+    <rect x="-6" y="112" width="6" height="10"/>
+    <rect x="12" y="110" width="6" height="12"/>
+  </g>
+  <g class="obstacle2 px" fill="#f0883e">
+    <rect x="0" y="112" width="14" height="18"/>
+    <rect x="4" y="104" width="6" height="8"/>
+  </g>
+
+  <!-- runner character -->
+  <g class="runner">
+    <g class="body-bob px">
+      <!-- head -->
+      <rect x="14" y="72" width="20" height="18" fill="#00f0ff"/>
+      <!-- visor -->
+      <rect x="26" y="76" width="8" height="6" fill="#0d1117"/>
+      <rect x="30" y="77" width="4" height="4" fill="#ff2d95"/>
+      <!-- body -->
+      <rect x="12" y="90" width="24" height="20" fill="#ff2d95"/>
+      <!-- backpack -->
+      <rect x="6" y="92" width="6" height="14" fill="#ffe600"/>
+      <!-- arm -->
+      <rect x="34" y="92" width="8" height="6" fill="#00f0ff"/>
+      <!-- legs frame A -->
+      <g class="legs-a" fill="#00f0ff">
+        <rect x="12" y="110" width="8" height="14"/>
+        <rect x="28" y="110" width="8" height="8"/>
+        <rect x="32" y="116" width="8" height="8"/>
+      </g>
+      <!-- legs frame B -->
+      <g class="legs-b" fill="#00f0ff">
+        <rect x="28" y="110" width="8" height="14"/>
+        <rect x="12" y="110" width="8" height="8"/>
+        <rect x="8" y="116" width="8" height="8"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- HUD score -->
+  <g font-family="'Courier New', monospace" font-size="14" fill="#58a6ff" font-weight="bold">
+    <text x="20" y="24">SCORE 042617</text>
+    <text x="640" y="24">HI 099999</text>
+  </g>
+</svg>

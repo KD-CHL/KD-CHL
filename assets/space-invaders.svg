@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+  <style>
+    @keyframes march {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(30px); }
+    }
+    @keyframes frameA {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes frameB {
+      0%, 49% { opacity: 0; }
+      50%, 100% { opacity: 1; }
+    }
+    @keyframes shipMove {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(60px); }
+      75% { transform: translateX(-60px); }
+    }
+    @keyframes bullet {
+      0% { transform: translateY(0); opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-120px); opacity: 0; }
+    }
+    @keyframes explosion {
+      0%, 70% { opacity: 0; }
+      75%, 85% { opacity: 1; }
+      90%, 100% { opacity: 0; }
+    }
+    @keyframes shieldHit {
+      0%, 100% { opacity: 0.9; }
+      50% { opacity: 0.6; }
+    }
+    .invaders { animation: march 2s steps(2) infinite; }
+    .fa { animation: frameA 1s steps(1) infinite; }
+    .fb { animation: frameB 1s steps(1) infinite; }
+    .ship { animation: shipMove 4s ease-in-out infinite; }
+    .bullet1 { animation: bullet 1.2s linear infinite; }
+    .bullet2 { animation: bullet 1.2s linear infinite 0.6s; }
+    .boom { animation: explosion 4s linear infinite; }
+    .px { shape-rendering: crispEdges; }
+    .hud { font-family: 'Courier New', monospace; font-size: 13px; fill: #3fb950; font-weight: bold; }
+  </style>
+
+  <!-- background -->
+  <rect width="800" height="220" fill="#0d1117"/>
+
+  <!-- stars -->
+  <g fill="#c9d1d9" opacity="0.4">
+    <rect x="60" y="50" width="2" height="2"/>
+    <rect x="180" y="90" width="2" height="2"/>
+    <rect x="350" y="40" width="2" height="2"/>
+    <rect x="550" y="70" width="2" height="2"/>
+    <rect x="700" y="45" width="2" height="2"/>
+    <rect x="450" y="100" width="2" height="2"/>
+    <rect x="120" y="130" width="2" height="2"/>
+    <rect x="650" y="120" width="2" height="2"/>
+  </g>
+
+  <!-- HUD -->
+  <text class="hud" x="20" y="22">SCORE&lt;1&gt;  01580</text>
+  <text class="hud" x="350" y="22">HI-SCORE  08800</text>
+  <text class="hud" x="660" y="22">LIVES 3</text>
+
+  <!-- invader rows -->
+  <g class="invaders px">
+    <!-- Row 1: squid type (purple) -->
+    <g fill="#bc8cff">
+      <g transform="translate(220, 45)">
+        <g class="fa">
+          <rect x="8" y="0" width="8" height="4"/><rect x="4" y="4" width="16" height="4"/>
+          <rect x="0" y="8" width="24" height="4"/><rect x="4" y="12" width="4" height="4"/>
+          <rect x="16" y="12" width="4" height="4"/><rect x="8" y="16" width="8" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="8" y="0" width="8" height="4"/><rect x="4" y="4" width="16" height="4"/>
+          <rect x="0" y="8" width="24" height="4"/><rect x="0" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="4" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="16" y="16" width="4" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(320, 45)">
+        <g class="fa">
+          <rect x="8" y="0" width="8" height="4"/><rect x="4" y="4" width="16" height="4"/>
+          <rect x="0" y="8" width="24" height="4"/><rect x="4" y="12" width="4" height="4"/>
+          <rect x="16" y="12" width="4" height="4"/><rect x="8" y="16" width="8" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="8" y="0" width="8" height="4"/><rect x="4" y="4" width="16" height="4"/>
+          <rect x="0" y="8" width="24" height="4"/><rect x="0" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="4" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="16" y="16" width="4" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(420, 45)">
+        <g class="fa">
+          <rect x="8" y="0" width="8" height="4"/><rect x="4" y="4" width="16" height="4"/>
+          <rect x="0" y="8" width="24" height="4"/><rect x="4" y="12" width="4" height="4"/>
+          <rect x="16" y="12" width="4" height="4"/><rect x="8" y="16" width="8" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="8" y="0" width="8" height="4"/><rect x="4" y="4" width="16" height="4"/>
+          <rect x="0" y="8" width="24" height="4"/><rect x="0" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="4" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="16" y="16" width="4" height="4"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Row 2: crab type (cyan) -->
+    <g fill="#00f0ff">
+      <g transform="translate(180, 80)">
+        <g class="fa">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="0" y="16" width="4" height="4"/>
+          <rect x="24" y="16" width="4" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="20" y="16" width="4" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(280, 80)">
+        <g class="fa">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="0" y="16" width="4" height="4"/>
+          <rect x="24" y="16" width="4" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="20" y="16" width="4" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(380, 80)">
+        <g class="fa">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="0" y="16" width="4" height="4"/>
+          <rect x="24" y="16" width="4" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="20" y="16" width="4" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(480, 80)">
+        <g class="fa">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="0" y="16" width="4" height="4"/>
+          <rect x="24" y="16" width="4" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="4" y="0" width="4" height="4"/><rect x="20" y="0" width="4" height="4"/>
+          <rect x="8" y="4" width="12" height="4"/><rect x="4" y="8" width="20" height="4"/>
+          <rect x="0" y="12" width="8" height="4"/><rect x="12" y="12" width="4" height="4"/>
+          <rect x="20" y="12" width="8" height="4"/><rect x="4" y="16" width="4" height="4"/>
+          <rect x="20" y="16" width="4" height="4"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Row 3: octopus type (pink) -->
+    <g fill="#ff2d95">
+      <g transform="translate(200, 115)">
+        <g class="fa">
+          <rect x="8" y="0" width="12" height="4"/><rect x="4" y="4" width="20" height="4"/>
+          <rect x="0" y="8" width="28" height="4"/><rect x="0" y="12" width="8" height="4"/>
+          <rect x="12" y="12" width="4" height="4"/><rect x="20" y="12" width="8" height="4"/>
+          <rect x="0" y="16" width="6" height="4"/><rect x="22" y="16" width="6" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="8" y="0" width="12" height="4"/><rect x="4" y="4" width="20" height="4"/>
+          <rect x="0" y="8" width="28" height="4"/><rect x="0" y="12" width="8" height="4"/>
+          <rect x="12" y="12" width="4" height="4"/><rect x="20" y="12" width="8" height="4"/>
+          <rect x="4" y="16" width="6" height="4"/><rect x="18" y="16" width="6" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(300, 115)">
+        <g class="fa">
+          <rect x="8" y="0" width="12" height="4"/><rect x="4" y="4" width="20" height="4"/>
+          <rect x="0" y="8" width="28" height="4"/><rect x="0" y="12" width="8" height="4"/>
+          <rect x="12" y="12" width="4" height="4"/><rect x="20" y="12" width="8" height="4"/>
+          <rect x="0" y="16" width="6" height="4"/><rect x="22" y="16" width="6" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="8" y="0" width="12" height="4"/><rect x="4" y="4" width="20" height="4"/>
+          <rect x="0" y="8" width="28" height="4"/><rect x="0" y="12" width="8" height="4"/>
+          <rect x="12" y="12" width="4" height="4"/><rect x="20" y="12" width="8" height="4"/>
+          <rect x="4" y="16" width="6" height="4"/><rect x="18" y="16" width="6" height="4"/>
+        </g>
+      </g>
+      <g transform="translate(400, 115)">
+        <g class="fa">
+          <rect x="8" y="0" width="12" height="4"/><rect x="4" y="4" width="20" height="4"/>
+          <rect x="0" y="8" width="28" height="4"/><rect x="0" y="12" width="8" height="4"/>
+          <rect x="12" y="12" width="4" height="4"/><rect x="20" y="12" width="8" height="4"/>
+          <rect x="0" y="16" width="6" height="4"/><rect x="22" y="16" width="6" height="4"/>
+        </g>
+        <g class="fb">
+          <rect x="8" y="0" width="12" height="4"/><rect x="4" y="4" width="20" height="4"/>
+          <rect x="0" y="8" width="28" height="4"/><rect x="0" y="12" width="8" height="4"/>
+          <rect x="12" y="12" width="4" height="4"/><rect x="20" y="12" width="8" height="4"/>
+          <rect x="4" y="16" width="6" height="4"/><rect x="18" y="16" width="6" height="4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- explosion near an invader -->
+  <g class="boom px" fill="#ffe600" transform="translate(530, 80)">
+    <rect x="8" y="0" width="4" height="4"/><rect x="0" y="8" width="4" height="4"/>
+    <rect x="16" y="8" width="4" height="4"/><rect x="8" y="16" width="4" height="4"/>
+    <rect x="6" y="6" width="8" height="8" fill="#f0883e"/>
+  </g>
+
+  <!-- player ship -->
+  <g class="ship px">
+    <g fill="#3fb950">
+      <rect x="388" y="178" width="4" height="6"/>
+      <rect x="380" y="184" width="20" height="6"/>
+      <rect x="372" y="190" width="36" height="8"/>
+    </g>
+    <!-- bullets -->
+    <rect class="bullet1" x="389" y="170" width="2" height="8" fill="#ffe600"/>
+    <rect class="bullet2" x="389" y="170" width="2" height="8" fill="#ffe600"/>
+  </g>
+
+  <!-- ground line -->
+  <rect x="0" y="206" width="800" height="2" fill="#3fb950" opacity="0.7"/>
+</svg>
