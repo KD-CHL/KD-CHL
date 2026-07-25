@@ -98,6 +98,10 @@
   <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/space-invaders.svg" width="90%" alt="Space Invaders"/>
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/basketball.svg" width="90%" alt="Basketball Shooter"/>
+</p>
+
 <br/>
 
 <!-- ==================== Projects Showcase ==================== -->

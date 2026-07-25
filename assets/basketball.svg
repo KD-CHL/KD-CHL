@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240">
+  <style>
+    /* === Ball flight: parabolic arc from hand to hoop === */
+    @keyframes ballFlight {
+      0%, 22% { transform: translate(0px, 0px); opacity: 0; }
+      23% { transform: translate(0px, 0px); opacity: 1; }
+      33% { transform: translate(120px, -75px); }
+      43% { transform: translate(240px, -105px); }
+      53% { transform: translate(360px, -75px); }
+      62% { transform: translate(468px, 8px); }
+      68% { transform: translate(468px, 58px); opacity: 1; }
+      70%, 100% { transform: translate(468px, 58px); opacity: 0; }
+    }
+    @keyframes ballSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* === Player poses === */
+    @keyframes poseHold {
+      0%, 14% { opacity: 1; }
+      15%, 88% { opacity: 0; }
+      89%, 100% { opacity: 1; }
+    }
+    @keyframes poseShoot {
+      0%, 14% { opacity: 0; }
+      15%, 88% { opacity: 1; }
+      89%, 100% { opacity: 0; }
+    }
+    @keyframes playerJump {
+      0%, 12% { transform: translateY(0); }
+      16%, 30% { transform: translateY(-14px); }
+      38%, 100% { transform: translateY(0); }
+    }
+    /* === Net physics === */
+    @keyframes netSway {
+      0%, 61% { transform: skewX(0deg) scaleY(1); }
+      64% { transform: skewX(0deg) scaleY(1.15); }
+      69% { transform: skewX(7deg) scaleY(1.05); }
+      76% { transform: skewX(-5deg) scaleY(1); }
+      83% { transform: skewX(3deg) scaleY(1); }
+      90%, 100% { transform: skewX(0deg) scaleY(1); }
+    }
+    /* === Score popup === */
+    @keyframes scorePop {
+      0%, 62% { opacity: 0; transform: translateY(0) scale(0.5); }
+      66% { opacity: 1; transform: translateY(-10px) scale(1.2); }
+      72% { opacity: 1; transform: translateY(-16px) scale(1); }
+      82% { opacity: 1; transform: translateY(-22px) scale(1); }
+      88%, 100% { opacity: 0; transform: translateY(-30px) scale(0.8); }
+    }
+    /* === Crowd wave === */
+    @keyframes crowdBounce {
+      0%, 60% { transform: translateY(0); }
+      66% { transform: translateY(-4px); }
+      72% { transform: translateY(0); }
+      78% { transform: translateY(-3px); }
+      84%, 100% { transform: translateY(0); }
+    }
+    /* === Scoreboard flicker === */
+    @keyframes boardFlicker {
+      0%, 62% { fill: #3fb950; }
+      66%, 80% { fill: #ffe600; }
+      85%, 100% { fill: #3fb950; }
+    }
+    .ball-flight { animation: ballFlight 3s linear infinite; }
+    .ball-spin { animation: ballSpin 1s linear infinite; transform-origin: center; }
+    .pose-hold { animation: poseHold 3s steps(1) infinite; }
+    .pose-shoot { animation: poseShoot 3s steps(1) infinite; }
+    .player-jump { animation: playerJump 3s ease-out infinite; }
+    .net { animation: netSway 3s ease-in-out infinite; transform-origin: top center; }
+    .score-pop { animation: scorePop 3s ease-out infinite; }
+    .crowd { animation: crowdBounce 3s ease-in-out infinite; }
+    .board-score { animation: boardFlicker 3s steps(1) infinite; }
+    .px { shape-rendering: crispEdges; }
+    .hud { font-family: 'Courier New', monospace; font-weight: bold; }
+  </style>
+
+  <!-- background: night court -->
+  <rect width="800" height="240" fill="#0d1117"/>
+
+  <!-- arena lights glow -->
+  <ellipse cx="400" cy="0" rx="380" ry="60" fill="#161b22" opacity="0.6"/>
+
+  <!-- crowd silhouettes -->
+  <g class="crowd" fill="#21262d">
+    <circle cx="250" cy="52" r="7"/><rect x="243" y="58" width="14" height="14"/>
+    <circle cx="280" cy="48" r="7"/><rect x="273" y="54" width="14" height="18"/>
+    <circle cx="310" cy="53" r="7"/><rect x="303" y="59" width="14" height="13"/>
+    <circle cx="340" cy="47" r="7"/><rect x="333" y="53" width="14" height="19"/>
+    <circle cx="370" cy="52" r="7"/><rect x="363" y="58" width="14" height="14"/>
+    <circle cx="400" cy="48" r="7"/><rect x="393" y="54" width="14" height="18"/>
+    <circle cx="430" cy="53" r="7"/><rect x="423" y="59" width="14" height="13"/>
+    <circle cx="460" cy="47" r="7"/><rect x="453" y="53" width="14" height="19"/>
+    <circle cx="490" cy="52" r="7"/><rect x="483" y="58" width="14" height="14"/>
+    <circle cx="520" cy="48" r="7"/><rect x="513" y="54" width="14" height="18"/>
+  </g>
+
+  <!-- scoreboard -->
+  <rect x="320" y="14" width="160" height="30" rx="3" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text class="hud board-score" x="400" y="35" text-anchor="middle" font-size="16">HOOPS  21:08</text>
+
+  <!-- HUD title -->
+  <text class="hud" x="20" y="30" font-size="13" fill="#58a6ff">KD-CHL STREETBALL</text>
+  <text class="hud" x="20" y="48" font-size="11" fill="#8b949e">PTS: 24  AST: 7</text>
+
+  <!-- court floor -->
+  <rect x="0" y="200" width="800" height="40" fill="#1c1208"/>
+  <rect x="0" y="200" width="800" height="3" fill="#f0883e" opacity="0.8"/>
+  <!-- court lines -->
+  <g stroke="#f0883e" stroke-width="2" opacity="0.3" fill="none">
+    <path d="M 560 203 Q 480 230 460 240"/>
+    <line x1="620" y1="203" x2="620" y2="240"/>
+  </g>
+
+  <!-- === HOOP === -->
+  <!-- pole -->
+  <rect x="700" y="90" width="8" height="110" fill="#30363d"/>
+  <rect x="660" y="86" width="48" height="6" fill="#30363d"/>
+  <!-- backboard -->
+  <rect x="652" y="60" width="10" height="56" fill="#c9d1d9"/>
+  <rect x="648" y="74" width="6" height="24" fill="#8b949e"/>
+  <!-- rim -->
+  <rect x="604" y="104" width="50" height="5" rx="2" fill="#f85149"/>
+  <circle cx="606" cy="106" r="3" fill="#f85149"/>
+  <!-- net -->
+  <g class="net" stroke="#c9d1d9" stroke-width="1.5" fill="none" opacity="0.85">
+    <path d="M 608 109 L 614 140"/>
+    <path d="M 618 109 L 620 140"/>
+    <path d="M 629 109 L 627 140"/>
+    <path d="M 640 109 L 634 140"/>
+    <path d="M 648 109 L 640 140"/>
+    <path d="M 610 118 L 646 118"/>
+    <path d="M 612 128 L 642 128"/>
+    <path d="M 614 138 L 638 138"/>
+  </g>
+
+  <!-- === PLAYER === -->
+  <g class="player-jump px">
+    <!-- Pose A: holding ball, knees bent -->
+    <g class="pose-hold">
+      <!-- head -->
+      <rect x="108" y="118" width="18" height="18" fill="#ffcba4"/>
+      <!-- headband -->
+      <rect x="108" y="118" width="18" height="5" fill="#ff2d95"/>
+      <!-- hair -->
+      <rect x="108" y="114" width="18" height="5" fill="#1a1a2e"/>
+      <!-- eye -->
+      <rect x="120" y="126" width="3" height="3" fill="#0d1117"/>
+      <!-- jersey -->
+      <rect x="104" y="136" width="26" height="24" fill="#00f0ff"/>
+      <rect x="112" y="140" width="10" height="4" fill="#0d1117"/>
+      <!-- number -->
+      <rect x="114" y="146" width="6" height="8" fill="#0d1117"/>
+      <!-- arms holding ball -->
+      <rect x="126" y="138" width="16" height="6" fill="#ffcba4"/>
+      <rect x="138" y="132" width="6" height="10" fill="#ffcba4"/>
+      <!-- ball in hands -->
+      <circle cx="148" cy="128" r="10" fill="#f0883e"/>
+      <path d="M 140 124 Q 148 128 140 133" stroke="#8b4513" stroke-width="1.5" fill="none"/>
+      <line x1="148" y1="118" x2="148" y2="138" stroke="#8b4513" stroke-width="1.5"/>
+      <!-- shorts -->
+      <rect x="106" y="160" width="22" height="12" fill="#1a1f35"/>
+      <!-- legs bent -->
+      <rect x="106" y="172" width="8" height="16" fill="#ffcba4"/>
+      <rect x="120" y="172" width="8" height="16" fill="#ffcba4"/>
+      <!-- sneakers -->
+      <rect x="104" y="188" width="12" height="8" fill="#ffe600"/>
+      <rect x="118" y="188" width="12" height="8" fill="#ffe600"/>
+    </g>
+
+    <!-- Pose B: shooting follow-through, arm extended up -->
+    <g class="pose-shoot">
+      <!-- head -->
+      <rect x="108" y="118" width="18" height="18" fill="#ffcba4"/>
+      <!-- headband -->
+      <rect x="108" y="118" width="18" height="5" fill="#ff2d95"/>
+      <!-- hair -->
+      <rect x="108" y="114" width="18" height="5" fill="#1a1a2e"/>
+      <!-- eye -->
+      <rect x="120" y="126" width="3" height="3" fill="#0d1117"/>
+      <!-- jersey -->
+      <rect x="104" y="136" width="26" height="24" fill="#00f0ff"/>
+      <rect x="112" y="140" width="10" height="4" fill="#0d1117"/>
+      <!-- number -->
+      <rect x="114" y="146" width="6" height="8" fill="#0d1117"/>
+      <!-- shooting arm extended up -->
+      <rect x="126" y="120" width="6" height="20" fill="#ffcba4"/>
+      <rect x="126" y="112" width="6" height="10" fill="#ffcba4"/>
+      <!-- wrist flick -->
+      <rect x="124" y="108" width="10" height="5" fill="#ffcba4"/>
+      <!-- off arm -->
+      <rect x="98" y="138" width="8" height="6" fill="#ffcba4"/>
+      <!-- shorts -->
+      <rect x="106" y="160" width="22" height="12" fill="#1a1f35"/>
+      <!-- legs extended (jumping) -->
+      <rect x="106" y="172" width="8" height="18" fill="#ffcba4"/>
+      <rect x="120" y="172" width="8" height="14" fill="#ffcba4"/>
+      <rect x="124" y="184" width="8" height="6" fill="#ffcba4"/>
+      <!-- sneakers -->
+      <rect x="104" y="190" width="12" height="7" fill="#ffe600"/>
+      <rect x="124" y="189" width="12" height="7" fill="#ffe600"/>
+    </g>
+  </g>
+
+  <!-- === BALL IN FLIGHT === -->
+  <g class="ball-flight">
+    <g transform="translate(148, 100)">
+      <g class="ball-spin">
+        <circle cx="0" cy="0" r="10" fill="#f0883e"/>
+        <line x1="0" y1="-10" x2="0" y2="10" stroke="#8b4513" stroke-width="1.5"/>
+        <path d="M -8 -5 Q 0 0 -8 5" stroke="#8b4513" stroke-width="1.5" fill="none"/>
+        <path d="M 8 -5 Q 0 0 8 5" stroke="#8b4513" stroke-width="1.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- === SCORE POPUP === -->
+  <g class="score-pop">
+    <text class="hud" x="600" y="70" text-anchor="middle" font-size="22" fill="#ffe600">+2</text>
+    <text class="hud" x="600" y="52" text-anchor="middle" font-size="11" fill="#3fb950">SWISH!</text>
+  </g>
+
+  <!-- floor reflection -->
+  <rect x="80" y="204" width="60" height="20" fill="#00f0ff" opacity="0.04"/>
+  <rect x="580" y="204" width="80" height="20" fill="#f85149" opacity="0.04"/>
+</svg>
