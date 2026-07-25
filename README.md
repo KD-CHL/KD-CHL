@@ -102,10 +102,10 @@
 
 <p align="center">
   <a href="https://github.com/KD-CHL">
-    <img src="https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"/>
+    <img src="https://img.shields.io/badge/GitHub-KD--CHL-181717?style=for-the-badge&logo=github&logoColor=white"/>
   </a>
   <a href="mailto:2020758633@qq.com">
-    <img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Email-2020758633%40qq.com-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
 </p>
 
@@ -120,5 +120,5 @@
 <p align="center">
   <b>Thanks for visiting! :heart:</b>
   <br/><br/>
-  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FKD-CHL&count_bg=%237B2FF7&title_bg=%230D1117&icon=github.svg&icon_color=%2300D2FF&title=visits&edge_flat=true" alt="visitor count"/>
+  <img src="https://komarev.com/ghpvc/?username=KD-CHL&label=PROFILE+VIEWS&color=blueviolet&style=for-the-badge" alt="profile views"/>
 </p>
