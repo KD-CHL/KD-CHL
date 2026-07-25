@@ -48,7 +48,6 @@
 <p align="center">
   <img src="https://img.shields.io/github/followers/KD-CHL?style=for-the-badge&logo=github&label=Followers&color=181717&labelColor=0d1117"/>
   <img src="https://img.shields.io/github/stars/KD-CHL?affiliations=OWNER&style=for-the-badge&logo=github&label=Total%20Stars&color=181717&labelColor=0d1117"/>
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2FKD-CHL&query=%24.public_repos&style=for-the-badge&logo=github&label=Public%20Repos&color=181717&labelColor=0d1117"/>
 </p>
 
 <p align="center">
@@ -72,14 +71,16 @@
 
 <br/>
 
-<!-- ==================== Star History ==================== -->
-## <img src="https://media.giphy.com/media/QBw33dFlgxnzXSAS27/giphy.gif" width="28"> Star History
+<!-- ==================== Open Source ==================== -->
+## <img src="https://media.giphy.com/media/QBw33dFlgxnzXSAS27/giphy.gif" width="28"> Open Source
 
 <p align="center">
-  <a href="https://star-history.com/#KD-CHL/agentsystem&KD-CHL/ContractAI&KD-CHL/learngit&Date">
-    <img src="https://api.star-history.com/svg?repos=KD-CHL/agentsystem,KD-CHL/ContractAI,KD-CHL/learngit&type=Date&theme=dark" width="85%" alt="Star History Chart"/>
-  </a>
+  <img src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4%EF%B8%8F-FF6B6B?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Ask%20Me-Anything-1abc9c?style=for-the-badge"/>
 </p>
+
+> *"Any fool can write code that a computer can understand. Good programmers write code that humans can understand."* — Martin Fowler
 
 <br/>
 
