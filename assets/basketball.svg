@@ -1,54 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240">
   <style>
-    /* === Ball flight: parabolic arc from hand to hoop === */
+    /* === Ball: appears in hands, rises with jump, releases at apex, arcs to hoop === */
     @keyframes ballFlight {
-      0%, 22% { transform: translate(0px, 0px); opacity: 0; }
-      23% { transform: translate(0px, 0px); opacity: 1; }
-      33% { transform: translate(120px, -75px); }
-      43% { transform: translate(240px, -105px); }
-      53% { transform: translate(360px, -75px); }
-      62% { transform: translate(468px, 8px); }
-      68% { transform: translate(468px, 58px); opacity: 1; }
-      70%, 100% { transform: translate(468px, 58px); opacity: 0; }
+      0%, 13%  { transform: translate(18px, 36px); opacity: 0; }   /* hidden, in hands (pose A) */
+      14%      { transform: translate(18px, 36px); opacity: 1; }   /* visible, in hands */
+      17%, 21% { transform: translate(0px, 6px);  opacity: 1; }    /* rises with jump to release point */
+      26%      { transform: translate(62px, -13px); }
+      30%      { transform: translate(125px, -26px); }
+      35%      { transform: translate(187px, -34px); }
+      40%      { transform: translate(250px, -36px); }              /* arc apex */
+      44%      { transform: translate(312px, -33px); }
+      49%      { transform: translate(374px, -24px); }
+      53%      { transform: translate(437px, -10px); }
+      58%      { transform: translate(499px, 10px); }               /* reaches rim */
+      64%      { transform: translate(499px, 60px); opacity: 1; }  /* drops through net */
+      66%, 100%{ transform: translate(499px, 60px); opacity: 0; }
     }
     @keyframes ballSpin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    /* === Player poses === */
+    /* === Player poses: hold(crouch) -> shoot(follow-through) === */
     @keyframes poseHold {
-      0%, 14% { opacity: 1; }
-      15%, 88% { opacity: 0; }
-      89%, 100% { opacity: 1; }
+      0%, 13% { opacity: 1; }
+      14%, 92% { opacity: 0; }
+      93%, 100% { opacity: 1; }
     }
     @keyframes poseShoot {
-      0%, 14% { opacity: 0; }
-      15%, 88% { opacity: 1; }
-      89%, 100% { opacity: 0; }
+      0%, 13% { opacity: 0; }
+      14%, 92% { opacity: 1; }
+      93%, 100% { opacity: 0; }
     }
+    /* === Jump: rise, hang at apex (release), land === */
     @keyframes playerJump {
       0%, 12% { transform: translateY(0); }
-      16%, 30% { transform: translateY(-14px); }
-      38%, 100% { transform: translateY(0); }
+      17%, 20% { transform: translateY(-10px); }
+      27%, 100% { transform: translateY(0); }
     }
-    /* === Net physics === */
+    /* === Net reacts as ball passes through === */
     @keyframes netSway {
-      0%, 61% { transform: skewX(0deg) scaleY(1); }
-      64% { transform: skewX(0deg) scaleY(1.15); }
-      69% { transform: skewX(7deg) scaleY(1.05); }
-      76% { transform: skewX(-5deg) scaleY(1); }
-      83% { transform: skewX(3deg) scaleY(1); }
+      0%, 58% { transform: skewX(0deg) scaleY(1); }
+      62% { transform: skewX(0deg) scaleY(1.18); }
+      68% { transform: skewX(6deg) scaleY(1.05); }
+      75% { transform: skewX(-5deg) scaleY(1); }
+      82% { transform: skewX(3deg) scaleY(1); }
       90%, 100% { transform: skewX(0deg) scaleY(1); }
     }
-    /* === Score popup === */
+    /* === Score popup after the swish === */
     @keyframes scorePop {
-      0%, 62% { opacity: 0; transform: translateY(0) scale(0.5); }
-      66% { opacity: 1; transform: translateY(-10px) scale(1.2); }
+      0%, 60% { opacity: 0; transform: translateY(0) scale(0.5); }
+      65% { opacity: 1; transform: translateY(-10px) scale(1.2); }
       72% { opacity: 1; transform: translateY(-16px) scale(1); }
       82% { opacity: 1; transform: translateY(-22px) scale(1); }
       88%, 100% { opacity: 0; transform: translateY(-30px) scale(0.8); }
     }
-    /* === Crowd wave === */
+    /* === Crowd celebrates the bucket === */
     @keyframes crowdBounce {
       0%, 60% { transform: translateY(0); }
       66% { transform: translateY(-4px); }
@@ -56,19 +62,19 @@
       78% { transform: translateY(-3px); }
       84%, 100% { transform: translateY(0); }
     }
-    /* === Scoreboard flicker === */
+    /* === Scoreboard lights up === */
     @keyframes boardFlicker {
       0%, 62% { fill: #3fb950; }
       66%, 80% { fill: #ffe600; }
       85%, 100% { fill: #3fb950; }
     }
     .ball-flight { animation: ballFlight 3s linear infinite; }
-    .ball-spin { animation: ballSpin 1s linear infinite; transform-origin: center; }
+    .ball-spin { animation: ballSpin 1s linear infinite; transform-box: fill-box; transform-origin: center; }
     .pose-hold { animation: poseHold 3s steps(1) infinite; }
     .pose-shoot { animation: poseShoot 3s steps(1) infinite; }
     .player-jump { animation: playerJump 3s ease-out infinite; }
-    .net { animation: netSway 3s ease-in-out infinite; transform-origin: top center; }
-    .score-pop { animation: scorePop 3s ease-out infinite; }
+    .net { animation: netSway 3s ease-in-out infinite; transform-box: fill-box; transform-origin: top center; }
+    .score-pop { animation: scorePop 3s ease-out infinite; transform-box: fill-box; transform-origin: center; }
     .crowd { animation: crowdBounce 3s ease-in-out infinite; }
     .board-score { animation: boardFlicker 3s steps(1) infinite; }
     .px { shape-rendering: crispEdges; }
@@ -106,23 +112,18 @@
   <!-- court floor -->
   <rect x="0" y="200" width="800" height="40" fill="#1c1208"/>
   <rect x="0" y="200" width="800" height="3" fill="#f0883e" opacity="0.8"/>
-  <!-- court lines -->
   <g stroke="#f0883e" stroke-width="2" opacity="0.3" fill="none">
     <path d="M 560 203 Q 480 230 460 240"/>
     <line x1="620" y1="203" x2="620" y2="240"/>
   </g>
 
   <!-- === HOOP === -->
-  <!-- pole -->
   <rect x="700" y="90" width="8" height="110" fill="#30363d"/>
   <rect x="660" y="86" width="48" height="6" fill="#30363d"/>
-  <!-- backboard -->
   <rect x="652" y="60" width="10" height="56" fill="#c9d1d9"/>
   <rect x="648" y="74" width="6" height="24" fill="#8b949e"/>
-  <!-- rim -->
   <rect x="604" y="104" width="50" height="5" rx="2" fill="#f85149"/>
   <circle cx="606" cy="106" r="3" fill="#f85149"/>
-  <!-- net -->
   <g class="net" stroke="#c9d1d9" stroke-width="1.5" fill="none" opacity="0.85">
     <path d="M 608 109 L 614 140"/>
     <path d="M 618 109 L 620 140"/>
@@ -134,77 +135,56 @@
     <path d="M 614 138 L 638 138"/>
   </g>
 
-  <!-- === PLAYER === -->
-  <g class="player-jump px">
-    <!-- Pose A: holding ball, knees bent -->
+  <!-- === PLAYER (feet planted at floor y=200) === -->
+  <g class="player-jump px" transform="translate(0, 4)">
+    <!-- Pose A: crouched, holding ball -->
     <g class="pose-hold">
-      <!-- head -->
-      <rect x="108" y="118" width="18" height="18" fill="#ffcba4"/>
-      <!-- headband -->
-      <rect x="108" y="118" width="18" height="5" fill="#ff2d95"/>
-      <!-- hair -->
       <rect x="108" y="114" width="18" height="5" fill="#1a1a2e"/>
-      <!-- eye -->
+      <rect x="108" y="118" width="18" height="5" fill="#ff2d95"/>
+      <rect x="108" y="118" width="18" height="18" fill="#ffcba4"/>
       <rect x="120" y="126" width="3" height="3" fill="#0d1117"/>
-      <!-- jersey -->
       <rect x="104" y="136" width="26" height="24" fill="#00f0ff"/>
       <rect x="112" y="140" width="10" height="4" fill="#0d1117"/>
-      <!-- number -->
       <rect x="114" y="146" width="6" height="8" fill="#0d1117"/>
-      <!-- arms holding ball -->
       <rect x="126" y="138" width="16" height="6" fill="#ffcba4"/>
       <rect x="138" y="132" width="6" height="10" fill="#ffcba4"/>
-      <!-- ball in hands -->
+      <!-- ball held at chest -->
       <circle cx="148" cy="128" r="10" fill="#f0883e"/>
       <path d="M 140 124 Q 148 128 140 133" stroke="#8b4513" stroke-width="1.5" fill="none"/>
       <line x1="148" y1="118" x2="148" y2="138" stroke="#8b4513" stroke-width="1.5"/>
-      <!-- shorts -->
       <rect x="106" y="160" width="22" height="12" fill="#1a1f35"/>
-      <!-- legs bent -->
       <rect x="106" y="172" width="8" height="16" fill="#ffcba4"/>
       <rect x="120" y="172" width="8" height="16" fill="#ffcba4"/>
-      <!-- sneakers -->
       <rect x="104" y="188" width="12" height="8" fill="#ffe600"/>
       <rect x="118" y="188" width="12" height="8" fill="#ffe600"/>
     </g>
 
-    <!-- Pose B: shooting follow-through, arm extended up -->
+    <!-- Pose B: jump shot follow-through -->
     <g class="pose-shoot">
-      <!-- head -->
-      <rect x="108" y="118" width="18" height="18" fill="#ffcba4"/>
-      <!-- headband -->
-      <rect x="108" y="118" width="18" height="5" fill="#ff2d95"/>
-      <!-- hair -->
       <rect x="108" y="114" width="18" height="5" fill="#1a1a2e"/>
-      <!-- eye -->
+      <rect x="108" y="118" width="18" height="5" fill="#ff2d95"/>
+      <rect x="108" y="118" width="18" height="18" fill="#ffcba4"/>
       <rect x="120" y="126" width="3" height="3" fill="#0d1117"/>
-      <!-- jersey -->
       <rect x="104" y="136" width="26" height="24" fill="#00f0ff"/>
       <rect x="112" y="140" width="10" height="4" fill="#0d1117"/>
-      <!-- number -->
       <rect x="114" y="146" width="6" height="8" fill="#0d1117"/>
-      <!-- shooting arm extended up -->
+      <!-- shooting arm extended up, wrist flicked -->
       <rect x="126" y="120" width="6" height="20" fill="#ffcba4"/>
       <rect x="126" y="112" width="6" height="10" fill="#ffcba4"/>
-      <!-- wrist flick -->
       <rect x="124" y="108" width="10" height="5" fill="#ffcba4"/>
-      <!-- off arm -->
       <rect x="98" y="138" width="8" height="6" fill="#ffcba4"/>
-      <!-- shorts -->
       <rect x="106" y="160" width="22" height="12" fill="#1a1f35"/>
-      <!-- legs extended (jumping) -->
       <rect x="106" y="172" width="8" height="18" fill="#ffcba4"/>
       <rect x="120" y="172" width="8" height="14" fill="#ffcba4"/>
       <rect x="124" y="184" width="8" height="6" fill="#ffcba4"/>
-      <!-- sneakers -->
       <rect x="104" y="190" width="12" height="7" fill="#ffe600"/>
       <rect x="124" y="189" width="12" height="7" fill="#ffe600"/>
     </g>
   </g>
 
-  <!-- === BALL IN FLIGHT === -->
+  <!-- === BALL IN FLIGHT (group origin = release point at jump apex) === -->
   <g class="ball-flight">
-    <g transform="translate(148, 100)">
+    <g transform="translate(130, 96)">
       <g class="ball-spin">
         <circle cx="0" cy="0" r="10" fill="#f0883e"/>
         <line x1="0" y1="-10" x2="0" y2="10" stroke="#8b4513" stroke-width="1.5"/>
