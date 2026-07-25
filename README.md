@@ -46,8 +46,8 @@
 ## <img src="https://media.giphy.com/media/dMLmQfCO7lCA2gX3tw/giphy.gif" width="28"> GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=KD-CHL&show_icons=true&theme=radical&include_all_commits=true&hide_border=true&bg_color=0d1117" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=KD-CHL&theme=radical&layout=compact&hide_border=true&bg_color=0d1117" alt="Top Languages" height="165"/>
+  <img src="https://github-readme-stats-nu-navy-22.vercel.app/api?username=KD-CHL&show_icons=true&theme=radical&include_all_commits=true&hide_border=true&bg_color=0d1117" alt="GitHub Stats" height="165"/>
+  <img src="https://github-readme-stats-nu-navy-22.vercel.app/api/top-langs/?username=KD-CHL&theme=radical&layout=compact&hide_border=true&bg_color=0d1117" alt="Top Languages" height="165"/>
 </p>
 
 <p align="center">
