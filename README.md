@@ -46,8 +46,9 @@
 ## <img src="https://media.giphy.com/media/dMLmQfCO7lCA2gX3tw/giphy.gif" width="28"> GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats-nu-navy-22.vercel.app/api?username=KD-CHL&show_icons=true&theme=radical&include_all_commits=true&hide_border=true&bg_color=0d1117" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-stats-nu-navy-22.vercel.app/api/top-langs/?username=KD-CHL&theme=radical&layout=compact&hide_border=true&bg_color=0d1117" alt="Top Languages" height="165"/>
+  <img src="https://img.shields.io/github/followers/KD-CHL?style=for-the-badge&logo=github&label=Followers&color=181717&labelColor=0d1117"/>
+  <img src="https://img.shields.io/github/stars/KD-CHL?affiliations=OWNER&style=for-the-badge&logo=github&label=Total%20Stars&color=181717&labelColor=0d1117"/>
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Fusers%2FKD-CHL&query=%24.public_repos&style=for-the-badge&logo=github&label=Public%20Repos&color=181717&labelColor=0d1117"/>
 </p>
 
 <p align="center">
@@ -71,12 +72,12 @@
 
 <br/>
 
-<!-- ==================== Trophies ==================== -->
-## <img src="https://media.giphy.com/media/QBw33dFlgxnzXSAS27/giphy.gif" width="28"> Trophies
+<!-- ==================== Star History ==================== -->
+## <img src="https://media.giphy.com/media/QBw33dFlgxnzXSAS27/giphy.gif" width="28"> Star History
 
 <p align="center">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=KD-CHL&theme=radical&no-frame=true&column=7" alt="KD-CHL trophies"/>
+  <a href="https://star-history.com/#KD-CHL/agentsystem&KD-CHL/ContractAI&KD-CHL/learngit&Date">
+    <img src="https://api.star-history.com/svg?repos=KD-CHL/agentsystem,KD-CHL/ContractAI,KD-CHL/learngit&type=Date&theme=dark" width="85%" alt="Star History Chart"/>
   </a>
 </p>
 
@@ -118,5 +119,5 @@
 <p align="center">
   <b>Thanks for visiting! :heart:</b>
   <br/><br/>
-  <img src="https://count.getloli.com/get/@KD-CHL.github.readme?theme=rule34" alt="visitor count"/>
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FKD-CHL&count_bg=%237B2FF7&title_bg=%230D1117&icon=github.svg&icon_color=%2300D2FF&title=visits&edge_flat=true" alt="visitor count"/>
 </p>
