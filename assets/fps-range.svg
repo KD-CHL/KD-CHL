@@ -8,19 +8,19 @@
       <stop offset="0%" stop-color="#10151d"/>
       <stop offset="100%" stop-color="#0a0e14"/>
     </linearGradient>
-    <clipPath id="slot1"><rect x="-70" y="-200" width="140" height="176"/></clipPath>
-    <clipPath id="slot2"><rect x="-60" y="-200" width="120" height="180"/></clipPath>
-    <clipPath id="slot3"><rect x="-80" y="-200" width="160" height="170"/></clipPath>
+    <clipPath id="slot1"><rect x="-70" y="-110" width="140" height="88"/></clipPath>
+    <clipPath id="slot2"><rect x="-50" y="-120" width="100" height="104"/></clipPath>
+    <clipPath id="slot3"><rect x="-60" y="-115" width="120" height="97"/></clipPath>
   </defs>
 
   <style>
-    /* ===== Crosshair: moves between targets ===== */
+    /* ===== Crosshair: snaps between targets ===== */
     @keyframes aim {
-      0%, 9%   { transform: translate(400px, 112px); }
-      14%, 20% { transform: translate(160px, 112px); }
-      30%, 43% { transform: translate(620px, 114px); }
-      55%, 67% { transform: translate(330px, 128px); }
-      80%,100% { transform: translate(400px, 112px); }
+      0%, 9%   { transform: translate(380px, 130px); }
+      14%, 20% { transform: translate(142px, 127px); }
+      30%, 43% { transform: translate(321px, 66px); }
+      55%, 67% { transform: translate(239px, 99px); }
+      80%,100% { transform: translate(380px, 130px); }
     }
     @keyframes chkick {
       0%, 14.5% { transform: scale(1); }
@@ -31,30 +31,31 @@
       62.5% { transform: scale(1.4); }
       65%, 100% { transform: scale(1); }
     }
-    /* ===== Gun: idle sway, aim swing, recoil, reload dip ===== */
+    /* ===== Gun: idle sway, aim swing (pivots at muzzle), recoil, reload dip ===== */
     @keyframes sway {
       0%, 100% { transform: translate(0px, 0px); }
       50% { transform: translate(-2px, 2px); }
     }
+    /* aimrot matches the crosshair: barrel points exactly at each target */
     @keyframes aimrot {
       0%, 9%   { transform: rotate(0deg); }
-      14%, 20% { transform: rotate(-4deg); }
-      30%, 43% { transform: rotate(4deg); }
-      55%, 67% { transform: rotate(-2deg); }
+      14%, 20% { transform: rotate(-17deg); }
+      30%, 43% { transform: rotate(13deg); }
+      55%, 67% { transform: rotate(-7deg); }
       80%,100% { transform: rotate(0deg); }
     }
     @keyframes recoil {
       0%, 14%  { transform: translate(0,0); }
-      15.5% { transform: translate(8px, 3px); }
+      15.5% { transform: translate(9px, 3px); }
       19%, 37% { transform: translate(0,0); }
-      38.5% { transform: translate(8px, 3px); }
+      38.5% { transform: translate(9px, 3px); }
       42%, 61% { transform: translate(0,0); }
-      62.5% { transform: translate(8px, 3px); }
+      62.5% { transform: translate(9px, 3px); }
       66%, 100% { transform: translate(0,0); }
     }
     @keyframes reloadtilt {
       0%, 69% { transform: rotate(0deg) translate(0,0); }
-      74%, 82% { transform: rotate(16deg) translate(6px, 16px); }
+      74%, 82% { transform: rotate(-14deg) translate(4px, 18px); }
       88%, 100% { transform: rotate(0deg) translate(0,0); }
     }
     @keyframes flash {
@@ -66,7 +67,7 @@
       62%, 64% { opacity: 1; }
       65%, 100% { opacity: 0; }
     }
-    /* ===== Tracers travel from muzzle to target ===== */
+    /* ===== Tracers travel from muzzle to target along the barrel ===== */
     @keyframes tracer1 {
       0%, 14.9% { stroke-dashoffset: 0.3; opacity: 0; }
       15% { stroke-dashoffset: 0.3; opacity: 1; }
@@ -86,9 +87,9 @@
       67%, 100% { stroke-dashoffset: -1; opacity: 0; }
     }
     /* ===== Targets pop up, get hit, fall ===== */
-    @keyframes pop1 { 0%, 4% { transform: translateY(55px); } 9%, 100% { transform: translateY(0); } }
-    @keyframes pop2 { 0%, 22% { transform: translateY(50px); } 27%, 100% { transform: translateY(0); } }
-    @keyframes pop3 { 0%, 45% { transform: translateY(60px); } 50%, 100% { transform: translateY(0); } }
+    @keyframes pop1 { 0%, 4% { transform: translateY(44px); } 9%, 100% { transform: translateY(0); } }
+    @keyframes pop2 { 0%, 22% { transform: translateY(66px); } 27%, 100% { transform: translateY(0); } }
+    @keyframes pop3 { 0%, 45% { transform: translateY(54px); } 50%, 100% { transform: translateY(0); } }
     @keyframes fall1 {
       0%, 16% { transform: rotate(0deg); opacity: 1; }
       25% { transform: rotate(82deg); opacity: 1; }
@@ -131,8 +132,8 @@
     .aim { animation: aim 4s linear infinite; }
     .chkick { animation: chkick 4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
     .sway { animation: sway 2.4s ease-in-out infinite; }
-    .aimrot { animation: aimrot 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 85% 90%; }
-    .reloadtilt { animation: reloadtilt 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 85% 90%; }
+    .aimrot { animation: aimrot 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 14.6% 38.2%; }
+    .reloadtilt { animation: reloadtilt 4s ease-in-out infinite; transform-box: fill-box; transform-origin: 76% 75%; }
     .recoil { animation: recoil 4s ease-out infinite; }
     .flash { animation: flash 4s linear infinite; }
     .tracer1 { animation: tracer1 4s linear infinite; }
@@ -218,82 +219,82 @@
     <line x1="400" y1="120" x2="900" y2="240"/>
   </g>
 
-  <!-- ===== TARGET 1 (left) ===== -->
-  <g transform="translate(160, 152)">
+  <!-- ===== TARGET 1 (far left, low, close) ===== -->
+  <g transform="translate(142, 165)">
     <g clip-path="url(#slot1)">
       <g class="pop1">
         <g class="fall1">
-          <rect x="-3" y="-24" width="6" height="24" fill="#30363d"/>
-          <circle cx="0" cy="-40" r="20" fill="#e6edf3"/>
-          <circle cx="0" cy="-40" r="14" fill="#f85149"/>
-          <circle cx="0" cy="-40" r="8" fill="#e6edf3"/>
-          <circle cx="0" cy="-40" r="3.5" fill="#f85149"/>
-          <circle class="tflash1" cx="0" cy="-40" r="20" fill="#ffffff"/>
+          <rect x="-4" y="-20" width="8" height="20" fill="#30363d"/>
+          <circle cx="0" cy="-38" r="22" fill="#e6edf3"/>
+          <circle cx="0" cy="-38" r="15" fill="#f85149"/>
+          <circle cx="0" cy="-38" r="9" fill="#e6edf3"/>
+          <circle cx="0" cy="-38" r="4" fill="#f85149"/>
+          <circle class="tflash1" cx="0" cy="-38" r="22" fill="#ffffff"/>
         </g>
       </g>
     </g>
-    <rect x="-30" y="-24" width="60" height="24" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <rect x="-30" y="-24" width="60" height="5" fill="#f0883e" opacity="0.4"/>
+    <rect x="-32" y="-22" width="64" height="22" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <rect x="-32" y="-22" width="64" height="5" fill="#f0883e" opacity="0.4"/>
   </g>
 
-  <!-- ===== TARGET 2 (right, far) ===== -->
-  <g transform="translate(620, 148)">
+  <!-- ===== TARGET 2 (center, high, far) ===== -->
+  <g transform="translate(321, 130)">
     <g clip-path="url(#slot2)">
       <g class="pop2">
         <g class="fall2">
-          <rect x="-2.5" y="-20" width="5" height="20" fill="#30363d"/>
-          <circle cx="0" cy="-34" r="16" fill="#e6edf3"/>
-          <circle cx="0" cy="-34" r="11" fill="#f85149"/>
-          <circle cx="0" cy="-34" r="6.5" fill="#e6edf3"/>
-          <circle cx="0" cy="-34" r="3" fill="#f85149"/>
-          <circle class="tflash2" cx="0" cy="-34" r="16" fill="#ffffff"/>
+          <rect x="-3" y="-46" width="6" height="46" fill="#30363d"/>
+          <circle cx="0" cy="-64" r="15" fill="#e6edf3"/>
+          <circle cx="0" cy="-64" r="10" fill="#f85149"/>
+          <circle cx="0" cy="-64" r="6" fill="#e6edf3"/>
+          <circle cx="0" cy="-64" r="2.8" fill="#f85149"/>
+          <circle class="tflash2" cx="0" cy="-64" r="15" fill="#ffffff"/>
         </g>
       </g>
     </g>
-    <rect x="-24" y="-20" width="48" height="20" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <rect x="-24" y="-20" width="48" height="4" fill="#f0883e" opacity="0.4"/>
+    <rect x="-22" y="-16" width="44" height="16" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <rect x="-22" y="-16" width="44" height="4" fill="#f0883e" opacity="0.4"/>
   </g>
 
-  <!-- ===== TARGET 3 (center-left, close) ===== -->
-  <g transform="translate(330, 178)">
+  <!-- ===== TARGET 3 (center-left, mid) ===== -->
+  <g transform="translate(239, 148)">
     <g clip-path="url(#slot3)">
       <g class="pop3">
         <g class="fall3">
-          <rect x="-4" y="-30" width="8" height="30" fill="#30363d"/>
-          <circle cx="0" cy="-50" r="26" fill="#e6edf3"/>
-          <circle cx="0" cy="-50" r="18" fill="#f85149"/>
-          <circle cx="0" cy="-50" r="10" fill="#e6edf3"/>
-          <circle cx="0" cy="-50" r="4.5" fill="#f85149"/>
-          <circle class="tflash3" cx="0" cy="-50" r="26" fill="#ffffff"/>
+          <rect x="-3.5" y="-32" width="7" height="32" fill="#30363d"/>
+          <circle cx="0" cy="-49" r="19" fill="#e6edf3"/>
+          <circle cx="0" cy="-49" r="13" fill="#f85149"/>
+          <circle cx="0" cy="-49" r="7.5" fill="#e6edf3"/>
+          <circle cx="0" cy="-49" r="3.4" fill="#f85149"/>
+          <circle class="tflash3" cx="0" cy="-49" r="19" fill="#ffffff"/>
         </g>
       </g>
     </g>
-    <rect x="-38" y="-30" width="76" height="30" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <rect x="-38" y="-30" width="76" height="6" fill="#f0883e" opacity="0.4"/>
+    <rect x="-28" y="-18" width="56" height="18" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+    <rect x="-28" y="-18" width="56" height="4.5" fill="#f0883e" opacity="0.4"/>
   </g>
 
-  <!-- ===== TRACERS ===== -->
-  <line class="tracer1" x1="446" y1="151" x2="160" y2="112" stroke="#ffe600" stroke-width="2.5" pathLength="1" stroke-dasharray="0.3 0.7" stroke-linecap="round"/>
-  <line class="tracer2" x1="446" y1="151" x2="620" y2="114" stroke="#ffe600" stroke-width="2.5" pathLength="1" stroke-dasharray="0.3 0.7" stroke-linecap="round"/>
-  <line class="tracer3" x1="446" y1="151" x2="330" y2="128" stroke="#ffe600" stroke-width="2.5" pathLength="1" stroke-dasharray="0.3 0.7" stroke-linecap="round"/>
+  <!-- ===== TRACERS (from muzzle (450,160) to each target) ===== -->
+  <line class="tracer1" x1="450" y1="160" x2="142" y2="127" stroke="#ffe600" stroke-width="2.5" pathLength="1" stroke-dasharray="0.3 0.7" stroke-linecap="round"/>
+  <line class="tracer2" x1="450" y1="160" x2="321" y2="66" stroke="#ffe600" stroke-width="2.5" pathLength="1" stroke-dasharray="0.3 0.7" stroke-linecap="round"/>
+  <line class="tracer3" x1="450" y1="160" x2="239" y2="99" stroke="#ffe600" stroke-width="2.5" pathLength="1" stroke-dasharray="0.3 0.7" stroke-linecap="round"/>
 
   <!-- ===== HIT MARKERS + DAMAGE ===== -->
   <g stroke="#f85149" stroke-width="2.5" stroke-linecap="round">
-    <g class="hitmark1" transform="translate(160, 112)">
+    <g class="hitmark1" transform="translate(142, 127)">
       <line x1="-8" y1="-8" x2="-3" y2="-3"/><line x1="8" y1="-8" x2="3" y2="-3"/>
       <line x1="-8" y1="8" x2="-3" y2="3"/><line x1="8" y1="8" x2="3" y2="3"/>
     </g>
-    <g class="hitmark2" transform="translate(620, 114)">
+    <g class="hitmark2" transform="translate(321, 66)">
       <line x1="-8" y1="-8" x2="-3" y2="-3"/><line x1="8" y1="-8" x2="3" y2="-3"/>
       <line x1="-8" y1="8" x2="-3" y2="3"/><line x1="8" y1="8" x2="3" y2="3"/>
     </g>
-    <g class="hitmark3" transform="translate(330, 128)">
+    <g class="hitmark3" transform="translate(239, 99)">
       <line x1="-9" y1="-9" x2="-3.5" y2="-3.5"/><line x1="9" y1="-9" x2="3.5" y2="-3.5"/>
       <line x1="-9" y1="9" x2="-3.5" y2="3.5"/><line x1="9" y1="9" x2="3.5" y2="3.5"/>
     </g>
   </g>
   <g class="hud" font-size="12" fill="#ffe600">
-    <text class="dmg1" x="160" y="96" text-anchor="middle">100</text>
+    <text class="dmg1" x="142" y="98" text-anchor="middle">100</text>
   </g>
 
   <!-- ===== CROSSHAIR ===== -->
@@ -307,45 +308,45 @@
     </g>
   </g>
 
-  <!-- ===== GUN (first-person viewmodel) ===== -->
-  <g transform="translate(448, 152) rotate(16)">
+  <!-- ===== GUN (first-person viewmodel, muzzle pivots at (450,160)) ===== -->
+  <g transform="translate(450, 160) rotate(23)">
     <g class="sway">
       <g class="aimrot">
         <g class="reloadtilt">
           <g class="recoil px">
             <!-- muzzle flash (at muzzle, moves with gun) -->
             <g class="flash">
-              <circle cx="-10" cy="0" r="12" fill="#ffe600" opacity="0.5"/>
-              <polygon points="-38,0 -10,-9 -10,9" fill="#ffe600"/>
-              <polygon points="-16,-16 -6,-4 -18,-3" fill="#f0883e"/>
-              <polygon points="-16,16 -6,4 -18,3" fill="#f0883e"/>
-              <circle cx="-9" cy="0" r="5.5" fill="#ffffff"/>
+              <circle cx="-8" cy="0" r="12" fill="#ffe600" opacity="0.5"/>
+              <polygon points="-36,0 -8,-9 -8,9" fill="#ffe600"/>
+              <polygon points="-14,-16 -4,-4 -16,-3" fill="#f0883e"/>
+              <polygon points="-14,16 -4,4 -16,3" fill="#f0883e"/>
+              <circle cx="-7" cy="0" r="5.5" fill="#ffffff"/>
             </g>
             <!-- flash hider + barrel -->
-            <rect x="-2" y="-5" width="16" height="10" fill="#30363d"/>
-            <rect x="14" y="-4" width="36" height="8" fill="#1a1f29"/>
-            <rect x="20" y="-12" width="6" height="8" fill="#30363d"/>
+            <rect x="0" y="-5" width="16" height="10" fill="#30363d"/>
+            <rect x="16" y="-4" width="36" height="8" fill="#1a1f29"/>
+            <rect x="22" y="-12" width="6" height="8" fill="#30363d"/>
             <!-- handguard with rail -->
-            <rect x="50" y="-8" width="55" height="16" fill="#21262d"/>
-            <rect x="50" y="-2" width="55" height="2" fill="#00f0ff" opacity="0.7"/>
-            <rect x="60" y="-13" width="10" height="5" fill="#30363d"/>
+            <rect x="52" y="-8" width="55" height="16" fill="#21262d"/>
+            <rect x="52" y="-2" width="55" height="2" fill="#00f0ff" opacity="0.7"/>
+            <rect x="62" y="-13" width="10" height="5" fill="#30363d"/>
             <!-- receiver -->
-            <rect x="105" y="-9" width="60" height="18" fill="#1a1f29"/>
+            <rect x="107" y="-9" width="60" height="18" fill="#1a1f29"/>
             <!-- optic -->
-            <rect x="110" y="-21" width="36" height="12" fill="#30363d"/>
-            <circle cx="116" cy="-15" r="3.5" fill="#00f0ff"/>
+            <rect x="112" y="-21" width="36" height="12" fill="#30363d"/>
+            <circle cx="118" cy="-15" r="3.5" fill="#00f0ff"/>
             <!-- magazine -->
-            <polygon points="115,9 136,9 131,34 112,32" fill="#21262d"/>
+            <polygon points="117,9 138,9 133,34 114,32" fill="#21262d"/>
             <!-- grip -->
-            <polygon points="141,9 156,9 153,30 141,28" fill="#1a1f29"/>
+            <polygon points="143,9 158,9 155,30 143,28" fill="#1a1f29"/>
             <!-- stock -->
-            <rect x="165" y="-7" width="40" height="18" fill="#21262d"/>
-            <rect x="200" y="-9" width="8" height="22" fill="#30363d"/>
+            <rect x="167" y="-7" width="40" height="18" fill="#21262d"/>
+            <rect x="202" y="-9" width="8" height="22" fill="#30363d"/>
             <!-- front hand (glove) -->
-            <rect x="68" y="4" width="26" height="16" rx="3" fill="#2d333b"/>
-            <rect x="70" y="2" width="6" height="6" fill="#2d333b"/>
+            <rect x="70" y="4" width="26" height="16" rx="3" fill="#2d333b"/>
+            <rect x="72" y="2" width="6" height="6" fill="#2d333b"/>
             <!-- rear hand on grip -->
-            <rect x="138" y="12" width="20" height="18" rx="3" fill="#2d333b"/>
+            <rect x="140" y="12" width="20" height="18" rx="3" fill="#2d333b"/>
           </g>
         </g>
       </g>
