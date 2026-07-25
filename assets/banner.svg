@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e27"/>
+      <stop offset="50%" style="stop-color:#1a1040"/>
+      <stop offset="100%" style="stop-color:#0d1b3e"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d2ff">
+        <animate attributeName="stop-color" values="#00d2ff;#7b2ff7;#ff6bcb;#00d2ff" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" style="stop-color:#7b2ff7">
+        <animate attributeName="stop-color" values="#7b2ff7;#ff6bcb;#00d2ff;#7b2ff7" dur="6s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <linearGradient id="line1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d2ff;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#00d2ff;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#7b2ff7;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="320" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.06" stroke="#00d2ff" stroke-width="0.5">
+    <line x1="0" y1="40" x2="1200" y2="40"/><line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/><line x1="0" y1="160" x2="1200" y2="160"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/><line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="280" x2="1200" y2="280"/>
+    <line x1="100" y1="0" x2="100" y2="320"/><line x1="200" y1="0" x2="200" y2="320"/>
+    <line x1="300" y1="0" x2="300" y2="320"/><line x1="400" y1="0" x2="400" y2="320"/>
+    <line x1="500" y1="0" x2="500" y2="320"/><line x1="600" y1="0" x2="600" y2="320"/>
+    <line x1="700" y1="0" x2="700" y2="320"/><line x1="800" y1="0" x2="800" y2="320"/>
+    <line x1="900" y1="0" x2="900" y2="320"/><line x1="1000" y1="0" x2="1000" y2="320"/>
+    <line x1="1100" y1="0" x2="1100" y2="320"/>
+  </g>
+
+  <!-- Floating particles -->
+  <circle cx="150" cy="60" r="2" fill="#00d2ff" opacity="0.6">
+    <animate attributeName="cy" values="60;50;60" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="950" cy="90" r="3" fill="#7b2ff7" opacity="0.5">
+    <animate attributeName="cy" values="90;78;90" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1080" cy="200" r="2" fill="#ff6bcb" opacity="0.4">
+    <animate attributeName="cy" values="200;190;200" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="80" cy="240" r="2.5" fill="#00d2ff" opacity="0.4">
+    <animate attributeName="cy" values="240;230;240" dur="4.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="700" cy="45" r="1.8" fill="#ff6bcb" opacity="0.5">
+    <animate attributeName="cy" values="45;37;45" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Circuit lines left -->
+  <g stroke="#00d2ff" stroke-width="1" fill="none" opacity="0.25" filter="url(#glow)">
+    <path d="M0,260 H120 L150,230 H240"/>
+    <circle cx="240" cy="230" r="3" fill="#00d2ff"/>
+    <path d="M0,290 H80 L110,270 H180 L200,250"/>
+    <circle cx="200" cy="250" r="3" fill="#00d2ff"/>
+  </g>
+
+  <!-- Circuit lines right -->
+  <g stroke="#7b2ff7" stroke-width="1" fill="none" opacity="0.25" filter="url(#glow)">
+    <path d="M1200,70 H1080 L1050,100 H960"/>
+    <circle cx="960" cy="100" r="3" fill="#7b2ff7"/>
+    <path d="M1200,40 H1120 L1090,60 H1020"/>
+    <circle cx="1020" cy="60" r="3" fill="#7b2ff7"/>
+  </g>
+
+  <!-- Code symbols -->
+  <text x="180" y="130" font-family="monospace" font-size="22" fill="#00d2ff" opacity="0.3">&lt;/&gt;</text>
+  <text x="980" y="260" font-family="monospace" font-size="20" fill="#7b2ff7" opacity="0.3">{...}</text>
+  <text x="850" y="55" font-family="monospace" font-size="16" fill="#ff6bcb" opacity="0.25">def</text>
+  <text x="300" y="285" font-family="monospace" font-size="16" fill="#00d2ff" opacity="0.25">async</text>
+
+  <!-- Main title -->
+  <text x="600" y="145" text-anchor="middle" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="52" font-weight="bold" fill="url(#textGrad)" filter="url(#glow)">Hi there, I'm KD-CHL</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="195" text-anchor="middle" font-family="'Segoe UI', Ubuntu, sans-serif" font-size="22" fill="#8892b0">Full-Stack Developer · Python / Vue / TypeScript</text>
+
+  <!-- Animated underline -->
+  <rect x="350" y="215" width="500" height="2" fill="url(#line1)" rx="1">
+    <animate attributeName="x" values="350;380;350" dur="4s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Bottom wave -->
+  <path d="M0,300 C200,280 400,310 600,295 C800,280 1000,310 1200,290 L1200,320 L0,320 Z" fill="#00d2ff" opacity="0.05"/>
+  <path d="M0,310 C300,295 600,318 900,300 C1050,292 1150,308 1200,305 L1200,320 L0,320 Z" fill="#7b2ff7" opacity="0.06"/>
+</svg>
