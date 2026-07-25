@@ -59,8 +59,7 @@
 <!-- ==================== Contribution Graph Snake ==================== -->
 ## <img src="https://media.giphy.com/media/daIfTnwGeY0J3zc1tg/giphy.gif" width="28"> Contribution Activity
 
-![snake gif](https://raw.githubusercontent.com/KD-CHL/KD-CHL/output/github-contribution-grid-snake.svg)
-![snake dark gif](https://raw.githubusercontent.com/KD-CHL/KD-CHL/output/github-contribution-grid-snake-dark.svg)
+![snake gif](https://raw.githubusercontent.com/KD-CHL/KD-CHL/output/github-contribution-grid-snake-dark.svg)
 
 <br/>
 
