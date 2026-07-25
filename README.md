@@ -20,25 +20,11 @@
 <!-- ==================== About Me ==================== -->
 ## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> About Me
 
-```python
-class Developer:
-    def __init__(self):
-        self.name = "KD-CHL"
-        self.location = "China 🇨🇳"
-        self.role = "Full-Stack Developer"
-        self.motto = "Code is poetry written in logic."
-
-    def skills(self):
-        return {
-            "backend":  ["Python", "FastAPI", "Node.js"],
-            "frontend": ["Vue 3", "TypeScript", "Naive UI", "ECharts"],
-            "database": ["SQLite", "Turso", "PostgreSQL"],
-            "devops":   ["Git", "GitHub Actions", "Docker", "Vercel"],
-        }
-
-    def current_focus(self):
-        return ["🤖 AI Agent Systems", "🌐 Full-Stack Web Apps", "🎮 Interactive Learning Tools"]
-```
+- 👋 Hi, I'm **KD-CHL**, a full-stack developer from China 🇨🇳
+- 💡 I enjoy building products from idea to deployment — backend APIs, interactive frontends, and everything in between
+- 🤖 Currently exploring **AI Agent Systems**, **full-stack web apps**, and **interactive learning tools**
+- 📦 Maintainer of [AgentSystem](https://github.com/KD-CHL/agentsystem), [ContractAI](https://github.com/KD-CHL/ContractAI), [LearnGit](https://github.com/KD-CHL/learngit) and more
+- 🎯 Motto: *Code is poetry written in logic.*
 
 <br/>
 
