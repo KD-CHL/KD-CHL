@@ -108,19 +108,6 @@
 
 <br/>
 
-<!-- ==================== Projects Showcase ==================== -->
-## <img src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif" width="28"> Featured Projects
-
-| Project | Description |
-|---------|-------------|
-| [AgentSystem](https://github.com/KD-CHL/agentsystem) | 🤖 AI Agent management platform — FastAPI + Vue 3 |
-| [ContractAI](https://github.com/KD-CHL/ContractAI) | 📄 Intelligent contract review system — clause analysis & risk detection |
-| [LearnGit](https://github.com/KD-CHL/learngit) | 🎮 Interactive Git learning game — 17 levels with achievements |
-| [Mineradio](https://github.com/KD-CHL/Mineradio) | 🎵 Web radio application |
-| [Knowledge Blog](https://github.com/KD-CHL/myblog) | 📝 Personal knowledge log blog — full-stack with admin panel |
-
-<br/>
-
 <!-- ==================== Contact ==================== -->
 ## <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="28"> Contact Me
 
