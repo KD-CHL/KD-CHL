@@ -95,7 +95,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/space-invaders.svg" width="90%" alt="Space Invaders"/>
+  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/mario.svg" width="90%" alt="Super Mario Platformer"/>
 </p>
 
 <p align="center">

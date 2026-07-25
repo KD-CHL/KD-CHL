@@ -1,0 +1,285 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="220" viewBox="0 0 800 220">
+  <defs>
+    <!-- reusable ground brick tile (120px period) -->
+    <g id="groundTile">
+      <rect width="120" height="40" fill="#E39D25"/>
+      <path d="M0 20 H120 M30 0 V20 M60 0 V20 M90 0 V20 M15 20 V40 M45 20 V40 M75 20 V40 M105 20 V40" stroke="#B06000" stroke-width="2" fill="none"/>
+      <rect width="120" height="3" fill="#F8C471"/>
+    </g>
+    <!-- cloud puff -->
+    <g id="cloud">
+      <ellipse cx="0" cy="0" rx="24" ry="13" fill="#ffffff"/>
+      <ellipse cx="-18" cy="4" rx="15" ry="9" fill="#ffffff"/>
+      <ellipse cx="18" cy="4" rx="15" ry="9" fill="#ffffff"/>
+    </g>
+    <!-- hill -->
+    <g id="hill">
+      <path d="M -70 0 Q 0 -85 70 0 Z" fill="#00A800"/>
+      <path d="M -34 0 Q 0 -42 34 0 Z" fill="#00C850" opacity="0.5"/>
+    </g>
+    <!-- question block -->
+    <g id="qblock">
+      <rect x="-16" y="-16" width="32" height="32" fill="#F8B800" stroke="#000000" stroke-width="2" rx="2"/>
+      <rect x="-12" y="-12" width="24" height="24" fill="none" stroke="#C87820" stroke-width="1.5"/>
+      <text x="0" y="8" text-anchor="middle" font-size="21" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">?</text>
+      <rect x="-12" y="-12" width="3.5" height="3.5" fill="#C87820"/>
+      <rect x="8.5" y="-12" width="3.5" height="3.5" fill="#C87820"/>
+      <rect x="-12" y="8.5" width="3.5" height="3.5" fill="#C87820"/>
+      <rect x="8.5" y="8.5" width="3.5" height="3.5" fill="#C87820"/>
+    </g>
+  </defs>
+
+  <style>
+    /* ===== world scrolling (speed 300px/s unless noted) ===== */
+    @keyframes groundScroll { from { transform: translateX(0); } to { transform: translateX(-120px); } }   /* 0.4s, 300px/s */
+    @keyframes hillScroll   { from { transform: translateX(0); } to { transform: translateX(-400px); } }   /* 4s, 100px/s parallax */
+    @keyframes cloudScroll  { from { transform: translateX(0); } to { transform: translateX(-400px); } }   /* 8s, 50px/s parallax */
+
+    /* obstacles travel right-to-left at 300px/s, each entering at its own time */
+    @keyframes scrollPipe   { from { transform: translateX(90px); }   to { transform: translateX(-2310px); } }  /* passes Mario ~2.53s */
+    @keyframes scrollGoomba { from { transform: translateX(690px); }  to { transform: translateX(-1710px); } }  /* passes Mario ~4.53s */
+    @keyframes scrollBlock  { from { transform: translateX(1290px); } to { transform: translateX(-1110px); } }  /* overhead ~6.53s */
+
+    /* ===== Mario: jump arc over 8s master loop ===== */
+    @keyframes marioJump {
+      0%, 26.9% { transform: translateY(0); }
+      31.6% { transform: translateY(-65px); }   /* clear the pipe */
+      36.9% { transform: translateY(0); }
+      52.5% { transform: translateY(0); }
+      56.6% { transform: translateY(-40px); }   /* stomp the goomba */
+      61.25% { transform: translateY(0); }
+      77.5% { transform: translateY(0); }
+      81.6% { transform: translateY(-37px); }   /* headbutt the ? block */
+      86.25% { transform: translateY(0); }
+      100% { transform: translateY(0); }
+    }
+    /* run cycle: two leg frames alternating fast */
+    @keyframes legA { 0%, 49.9% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes legB { 0%, 49.9% { opacity: 0; } 50%, 100% { opacity: 1; } }
+    /* show running legs on ground, jump pose in the air */
+    @keyframes legsRun {
+      0%, 26.9% { opacity: 1; }
+      27.5%, 36.5% { opacity: 0; }
+      37%, 52.4% { opacity: 1; }
+      53%, 60.8% { opacity: 0; }
+      61.5%, 77.4% { opacity: 1; }
+      78%, 85.8% { opacity: 0; }
+      86.5%, 100% { opacity: 1; }
+    }
+    @keyframes legJump {
+      0%, 26.9% { opacity: 0; }
+      27.5%, 36.5% { opacity: 1; }
+      37%, 52.4% { opacity: 0; }
+      53%, 60.8% { opacity: 1; }
+      61.5%, 77.4% { opacity: 0; }
+      78%, 85.8% { opacity: 1; }
+      86.5%, 100% { opacity: 0; }
+    }
+
+    /* ===== Goomba: waddle, then get stomped ===== */
+    @keyframes goombaWaddle { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+    @keyframes goombaSquish {
+      0%, 57% { transform: scaleY(1); opacity: 1; }
+      58% { transform: scaleY(0.22); }
+      63% { transform: scaleY(0.22); opacity: 1; }
+      67%, 100% { transform: scaleY(0.22); opacity: 0; }
+    }
+    @keyframes scorePop {
+      0%, 57% { opacity: 0; transform: translateY(0); }
+      58% { opacity: 1; }
+      64% { opacity: 1; transform: translateY(-26px); }
+      66%, 100% { opacity: 0; transform: translateY(-26px); }
+    }
+
+    /* ===== ? block: bounce when hit, coin pops out ===== */
+    @keyframes blockBounce {
+      0%, 81.5% { transform: translateY(0); }
+      83.5% { transform: translateY(-9px); }
+      86%, 100% { transform: translateY(0); }
+    }
+    @keyframes coinPop {
+      0%, 81.5% { opacity: 0; transform: translateY(0); }
+      82.5% { opacity: 1; }
+      89% { opacity: 1; transform: translateY(-34px); }
+      91%, 100% { opacity: 0; transform: translateY(-34px); }
+    }
+    @keyframes coinSpin { 0% { transform: scaleX(1); } 50% { transform: scaleX(0.15); } 100% { transform: scaleX(1); } }
+
+    /* ===== HUD coin counter increments ===== */
+    @keyframes cc0 { 0%, 88.9% { opacity: 1; } 89%, 100% { opacity: 0; } }
+    @keyframes cc1 { 0%, 88.9% { opacity: 0; } 89%, 100% { opacity: 1; } }
+
+    .groundScroll { animation: groundScroll 0.4s linear infinite; }
+    .hillScroll { animation: hillScroll 4s linear infinite; }
+    .cloudScroll { animation: cloudScroll 8s linear infinite; }
+    .scrollPipe { animation: scrollPipe 8s linear infinite; }
+    .scrollGoomba { animation: scrollGoomba 8s linear infinite; }
+    .scrollBlock { animation: scrollBlock 8s linear infinite; }
+    .marioJump { animation: marioJump 8s ease-in-out infinite; }
+    .legA { animation: legA 0.25s linear infinite; }
+    .legB { animation: legB 0.25s linear infinite; }
+    .legsRun { animation: legsRun 8s linear infinite; }
+    .legJumpG { animation: legJump 8s linear infinite; }
+    .goombaWaddle { animation: goombaWaddle 0.3s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+    .goombaSquish { animation: goombaSquish 8s linear infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+    .scorePop { animation: scorePop 8s linear infinite; }
+    .blockBounce { animation: blockBounce 8s ease-out infinite; }
+    .coinPop { animation: coinPop 8s linear infinite; }
+    .coinSpin { animation: coinSpin 0.35s linear infinite; transform-box: fill-box; transform-origin: center; }
+    .cc0 { animation: cc0 8s linear infinite; }
+    .cc1 { animation: cc1 8s linear infinite; }
+    .hud { font-family: 'Courier New', monospace; font-weight: bold; fill: #ffffff; }
+    .px { shape-rendering: crispEdges; }
+  </style>
+
+  <!-- ===== SKY ===== -->
+  <rect width="800" height="220" fill="#5C94FC"/>
+
+  <!-- ===== CLOUDS (slow parallax) ===== -->
+  <g class="cloudScroll">
+    <use xlink:href="#cloud" href="#cloud" x="80" y="42"/>
+    <use xlink:href="#cloud" href="#cloud" x="280" y="64"/>
+    <use xlink:href="#cloud" href="#cloud" x="480" y="42"/>
+    <use xlink:href="#cloud" href="#cloud" x="680" y="64"/>
+    <use xlink:href="#cloud" href="#cloud" x="880" y="42"/>
+    <use xlink:href="#cloud" href="#cloud" x="1080" y="64"/>
+  </g>
+
+  <!-- ===== HILLS (medium parallax, behind ground) ===== -->
+  <g class="hillScroll">
+    <use xlink:href="#hill" href="#hill" x="150" y="180"/>
+    <use xlink:href="#hill" href="#hill" x="550" y="180"/>
+    <use xlink:href="#hill" href="#hill" x="950" y="180"/>
+    <use xlink:href="#hill" href="#hill" x="1350" y="180"/>
+  </g>
+
+  <!-- ===== GROUND (fast scroll) ===== -->
+  <g transform="translate(0, 180)">
+    <g class="groundScroll">
+      <use xlink:href="#groundTile" href="#groundTile" x="0" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="120" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="240" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="360" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="480" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="600" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="720" y="0"/>
+      <use xlink:href="#groundTile" href="#groundTile" x="840" y="0"/>
+    </g>
+  </g>
+
+  <!-- ===== PIPE (green, Mario jumps over it) ===== -->
+  <g transform="translate(850, 180)">
+    <g class="scrollPipe">
+      <rect x="-26" y="-40" width="52" height="12" fill="#00A800" stroke="#005000" stroke-width="2" rx="2"/>
+      <rect x="-22" y="-38" width="9" height="8" fill="#80D010"/>
+      <rect x="-20" y="-28" width="40" height="28" fill="#00A800" stroke="#005000" stroke-width="2"/>
+      <rect x="-16" y="-28" width="7" height="28" fill="#80D010"/>
+    </g>
+  </g>
+
+  <!-- ===== GOOMBA (Mario stomps it) ===== -->
+  <g transform="translate(850, 180)">
+    <g class="scrollGoomba">
+      <g class="scorePop">
+        <text class="hud" x="0" y="-40" text-anchor="middle" font-size="12" fill="#ffffff">+100</text>
+      </g>
+      <g class="goombaSquish">
+        <g class="goombaWaddle">
+          <path d="M -16 -6 Q -19 -30 0 -30 Q 19 -30 16 -6 Z" fill="#C07020" stroke="#7A4010" stroke-width="1.5"/>
+          <ellipse cx="-6" cy="-17" rx="4" ry="6" fill="#ffffff"/>
+          <ellipse cx="6" cy="-17" rx="4" ry="6" fill="#ffffff"/>
+          <ellipse cx="-5" cy="-15" rx="2" ry="3.2" fill="#000000"/>
+          <ellipse cx="5" cy="-15" rx="2" ry="3.2" fill="#000000"/>
+          <path d="M -11 -24 L -2 -20 M 11 -24 L 2 -20" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M -5 -8 Q 0 -11 5 -8" stroke="#000000" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <ellipse cx="-8" cy="-3" rx="8" ry="4" fill="#603010"/>
+          <ellipse cx="8" cy="-3" rx="8" ry="4" fill="#603010"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== QUESTION BLOCK (Mario headbutts it, coin pops) ===== -->
+  <g transform="translate(850, 79)">
+    <g class="scrollBlock">
+      <g class="blockBounce">
+        <use xlink:href="#qblock" href="#qblock"/>
+      </g>
+      <g transform="translate(0, -24)">
+        <g class="coinPop">
+          <g class="coinSpin">
+            <ellipse cx="0" cy="0" rx="8" ry="11" fill="#FFD700" stroke="#C89000" stroke-width="2"/>
+            <ellipse cx="0" cy="0" rx="3.5" ry="7" fill="#F8D860"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== MARIO ===== -->
+  <g transform="translate(180, 180)">
+    <g class="marioJump">
+      <g class="px">
+        <!-- cap -->
+        <rect x="-9" y="-48" width="18" height="6" fill="#E52521" rx="2"/>
+        <rect x="1" y="-44" width="14" height="4" fill="#E52521" rx="1"/>
+        <!-- face -->
+        <rect x="-9" y="-42" width="18" height="12" fill="#FFC8A0"/>
+        <rect x="-9" y="-42" width="4" height="6" fill="#6B3410"/>
+        <rect x="3" y="-39" width="3" height="5" fill="#000000"/>
+        <rect x="1" y="-32" width="9" height="3" fill="#6B3410"/>
+        <!-- shirt / torso -->
+        <rect x="-10" y="-30" width="20" height="10" fill="#E52521"/>
+        <!-- arms + hands -->
+        <rect x="-14" y="-29" width="5" height="9" fill="#E52521"/>
+        <rect x="-14" y="-21" width="5" height="4" fill="#FFC8A0"/>
+        <rect x="9" y="-29" width="5" height="9" fill="#E52521"/>
+        <rect x="9" y="-21" width="5" height="4" fill="#FFC8A0"/>
+        <!-- overalls -->
+        <rect x="-6" y="-28" width="3" height="4" fill="#2038EC"/>
+        <rect x="3" y="-28" width="3" height="4" fill="#2038EC"/>
+        <rect x="-6" y="-25" width="12" height="6" fill="#2038EC"/>
+        <rect x="-9" y="-20" width="18" height="11" fill="#2038EC"/>
+        <rect x="-6" y="-24" width="2.5" height="2.5" fill="#FFD700"/>
+        <rect x="3.5" y="-24" width="2.5" height="2.5" fill="#FFD700"/>
+        <!-- running legs (two frames) -->
+        <g class="legsRun">
+          <g class="legA">
+            <rect x="1" y="-9" width="7" height="6" fill="#2038EC"/>
+            <rect x="1" y="-3" width="10" height="3" fill="#6B3410"/>
+            <rect x="-8" y="-9" width="7" height="5" fill="#2038EC"/>
+            <rect x="-11" y="-4" width="9" height="3" fill="#6B3410"/>
+          </g>
+          <g class="legB">
+            <rect x="-1" y="-9" width="7" height="5" fill="#2038EC"/>
+            <rect x="-1" y="-4" width="10" height="3" fill="#6B3410"/>
+            <rect x="-8" y="-9" width="7" height="6" fill="#2038EC"/>
+            <rect x="-10" y="-3" width="9" height="3" fill="#6B3410"/>
+          </g>
+        </g>
+        <!-- jump pose legs -->
+        <g class="legJumpG">
+          <rect x="2" y="-10" width="7" height="5" fill="#2038EC"/>
+          <rect x="4" y="-5" width="9" height="3" fill="#6B3410"/>
+          <rect x="-9" y="-8" width="7" height="6" fill="#2038EC"/>
+          <rect x="-12" y="-2" width="8" height="3" fill="#6B3410"/>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ===== HUD ===== -->
+  <g class="hud" font-size="13" letter-spacing="1">
+    <text x="30" y="22">MARIO</text>
+    <text x="30" y="38">000000</text>
+    <g transform="translate(250, 30)">
+      <ellipse cx="0" cy="-4" rx="5" ry="7" fill="#FFD700" stroke="#C89000" stroke-width="1.5"/>
+      <text class="cc0" x="10" y="0">x00</text>
+      <text class="cc1" x="10" y="0">x01</text>
+    </g>
+    <text x="430" y="22">WORLD</text>
+    <text x="438" y="38">1-1</text>
+    <text x="620" y="22">TIME</text>
+    <text x="628" y="38">400</text>
+  </g>
+</svg>
