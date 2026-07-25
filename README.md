@@ -102,6 +102,10 @@
   <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/basketball.svg" width="90%" alt="Basketball Shooter"/>
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KD-CHL/KD-CHL/main/assets/fps-range.svg" width="90%" alt="FPS Shooting Range"/>
+</p>
+
 <br/>
 
 <!-- ==================== Projects Showcase ==================== -->
