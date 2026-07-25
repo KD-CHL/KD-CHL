@@ -1,4 +1,4 @@
-name: Generate Snake Animation
+name: Generate Profile Assets
 
 on:
   schedule:
@@ -13,10 +13,13 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
-      - name: Generate snake game from contributions
+      - uses: actions/checkout@v4
+
+      # 1. Snake animation (light + dark)
+      - name: Generate snake game
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: KD-CHL
@@ -24,11 +27,25 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
 
+      # 2. 3D contribution graph
+      - name: Generate 3D contribution graph
+        uses: yoshi389111/github-profile-3d-contrib@0.9.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: KD-CHL
+
+      # 3. Merge all assets into one build dir
+      - name: Merge outputs
+        run: |
+          mkdir -p build
+          cp dist/*.svg build/
+          cp profile-3d-contrib/*.svg build/
+
+      # 4. Push everything to output branch
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
-          build_dir: dist
-          keep_existing_files: true
+          build_dir: build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
